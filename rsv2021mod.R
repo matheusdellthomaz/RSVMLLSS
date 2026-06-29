@@ -88,7 +88,7 @@ set.seed(2)
 out <- mod %>%
   data_set(dose) %>%
   Req(CP, DV, CLi, V3i, Qi, V4i, F1i, F2i) %>%
-  mrgsim(end = 12, delta = 0.5)
+  mrgsim(end = 24, delta = 0.5)
 
 
 simul_rsv <- as_tibble(out) 
@@ -117,7 +117,7 @@ centile_99_auc <- quantile(base_prediction_auc$AUCt, 0.99)
 base_prediction_auc1 <- base_prediction_auc %>%
   filter(AUCt >= centile_1_auc, AUCt <= centile_99_auc)
 
- fwrite(base_prediction_auc1, file = "rsvsim202112h.csv")
+ fwrite(base_prediction_auc1, file = "rsvsim2021.csv")
 
 setwd("C:/Users/Matheus/Desktop/R")
 data <- as.data.frame(fread("rsvsim2021.csv"))
