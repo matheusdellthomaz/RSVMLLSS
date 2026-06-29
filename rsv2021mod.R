@@ -54,6 +54,8 @@ dxdt_PERIPH = (Qi/V3i)*CENTRAL - (Qi/V4i)*PERIPH;
 $TABLE
 double CP = CENTRAL / V3i;
 double DV = (CP * (1 + EPS(1)))+ EPS(2);
+if (TIME == 0) DV = 0;
+if (DV < 0) DV = 0;
 
 $CAPTURE CP DV CLi V3i Qi V4i F1i F2i;
 '
